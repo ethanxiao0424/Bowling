@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject ball;
     Rigidbody rb;
     public AudioSource ballAudio;
-
-    [SerializeField]
-    float force;
-
+    [SerializeField]float force;
     bool isShooting = false;
     bool isGoingRight = true;
 
@@ -21,6 +18,7 @@ public class GameManager : MonoBehaviour
     {
         rb = ball.GetComponent<Rigidbody>();
         rb.maxAngularVelocity = 50;
+        
     }
 
     // Update is called once per frame
@@ -31,11 +29,6 @@ public class GameManager : MonoBehaviour
             rb.AddForce(Vector3.forward * force);
             ballAudio.Play();
             isShooting = true;
-        }
-
-        if(Input.GetKey(KeyCode.Space))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         if(!isShooting)
@@ -60,11 +53,12 @@ public class GameManager : MonoBehaviour
             isGoingRight = false;
         }
 
-
         if(ball.transform.position.x < -0.5f)
         {
             isGoingRight = true;
         }
-
     }
+
+
+
 }
