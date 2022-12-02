@@ -34,7 +34,7 @@ public class UIManager : Singleton<UIManager>
 
         if (IsPanelLive(name))
         {
-            Debug.LogErrorFormat("[{0}] is Showing, if you want to show, please close first!!", name);
+            Debug.LogErrorFormat("[{0}] is Showing" ,name);
             return null;
         }
 

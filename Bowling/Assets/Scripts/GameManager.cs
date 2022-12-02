@@ -17,8 +17,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         rb = ball.GetComponent<Rigidbody>();
-        rb.maxAngularVelocity = 50;
-        
+        rb.maxAngularVelocity = 100;
     }
 
     // Update is called once per frame
