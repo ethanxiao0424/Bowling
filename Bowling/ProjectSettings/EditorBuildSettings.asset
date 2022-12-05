@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Ethan.unity
+    guid: 622b8c746d0e3204da54cb47ec479cf3
   m_configObjects: {}

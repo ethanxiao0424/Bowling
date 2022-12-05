@@ -4,26 +4,27 @@ public class Contact : MonoBehaviour
 {
     public AudioSource pinsAudio;
     public bool hit;
-    public GameObject[] pin;
-    public bool[] knockDown;
-    int pinDown;
-    public static int Score = 0;
+    public GameObject[] pins;
+    int pinDown=0;
+    public GameObject ball;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKeyDown(KeyCode.Space) || ball.transform.position.y < -20)
         {
-            CheckPinKnock();
-        }
+            CountPinKnock();
+            Debug.Log(pinDown);
+        } 
     }
-    void CheckPinKnock()
+
+    void CountPinKnock()
     {
-        foreach (GameObject go in pin)
+        for (int i = 0; i < pins.Length; i++)
         {
-            if (go.transform.position.y<0.15)
+            if (pins[i].transform.eulerAngles.z > 5 && pins[i].transform.eulerAngles.z < 355&&pins[i].activeSelf)
             {
                 pinDown++;
-                Debug.Log(pinDown);
+                pins[i].SetActive(false);
             }
         }
     }
