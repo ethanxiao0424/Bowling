@@ -8,23 +8,22 @@ public class GameManager : MonoBehaviour
     Vector3[] originalPos;
     Quaternion[] originalRot;
     int pinDown = 0;
-
     bool miss;
-    int frame;
-    bool finalFrame;
-
     public GameObject ball;
+    Rigidbody ballRb;
     public GameObject scoreManager;
+    private Rigidbody[] pinsRb;
 
     private void Start()
     {
+        ballRb = ball.GetComponent<Rigidbody>();
         originalPos = new Vector3[pins.Length];
         originalRot = new Quaternion[pins.Length];
+        pins = GameObject.FindGameObjectsWithTag("Pin");
         for (int i = 0; i < pins.Length; i++)
         {
             originalPos[i] = pins[i].transform.position;
             originalRot[i] = pins[i].transform.rotation;
-            Debug.Log(pins[i].transform.position);
         }
     }
     void Update()
@@ -32,10 +31,17 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || ball.transform.position.y < -20)
         {
             Init();
-        }
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
-        {
             scoreManager.GetComponent<ScoreManager>().Score();
+        }
+    }
+    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "BowlingBall")
+        {
+            CountPinKnock();
+            scoreManager.GetComponent<ScoreManager>().Roll(pinDown);
         }
     }
     void CountPinKnock()
@@ -50,46 +56,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.name == "BowlingBall")
-        {
-            CountPinKnock();
-            scoreManager.GetComponent<ScoreManager>().Roll(pinDown);
-        }
-    }
-
     void Init()
     {
         ball.transform.position = new Vector3(0, 0.0399999991f, 0.209999993f);
-        ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        ballRb.velocity = Vector3.zero;
+        ballRb.angularVelocity = Vector3.zero;
 
         if (pinDown == 10)
         {
-            for (int i = 0; i < pins.Length; i++)
-            {
-                pins[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
-                pins[i].GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-                pins[i].transform.position = originalPos[i];
-                pins[i].transform.rotation = originalRot[i];
-                pins[i].SetActive(true);
-            }
-            frame++;
+            InitPins();
         }
         else if(pinDown<10 && !miss)
         {
             for (int i = 0; i < pins.Length; i++)
             {
-                //pins[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
-                //pins[i].GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-                //pins[i].transform.position = originalPos[i];
-                //pins[i].transform.rotation = originalRot[i];
-                //pins[i].SetActive(true);
+ 
             }
             miss = true;
         }
         else if(pinDown<10 && miss)
+        {
+            InitPins();
+        }
+        pinDown = 0;
+
+        void InitPins()
         {
             for (int i = 0; i < pins.Length; i++)
             {
@@ -99,11 +90,6 @@ public class GameManager : MonoBehaviour
                 pins[i].transform.rotation = originalRot[i];
                 pins[i].SetActive(true);
             }
-            frame++;
         }
-
-        pinDown = 0;
     }
-
-
 }

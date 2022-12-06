@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class ScoreManager : MonoBehaviour
     private int[] frame = new int[10];
     private int currentRoll = 0;
     int selectFrame;
+    public TMP_Text ScoreUI;
 
     /// <summary>
     /// 每滾一球執行一次，用於計算分數
@@ -54,7 +57,9 @@ public class ScoreManager : MonoBehaviour
                 frameIndex += 2;
             }
         }
+        
         Debug.Log(score);
+        ScoreUI.text = score.ToString();
         return score;
     }
 
