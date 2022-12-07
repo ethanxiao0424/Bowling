@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     Quaternion[] originalRot;
     [SerializeField] Gut gut;
     int pinDown;
-    bool miss;
+    public bool miss=false;
     public GameObject ball;
     Rigidbody ballRb;
     [SerializeField] ScoreManager scoreManager;
@@ -45,9 +45,11 @@ public class GameManager : MonoBehaviour
         ball.transform.position = new Vector3(0, 0.0399999991f, 0.209999993f);
         ballRb.velocity = Vector3.zero;
         ballRb.angularVelocity = Vector3.zero;
+
         if (pinDown == 10)
         {
-            InitPins();
+            InitPinsPosAndRot();
+            SetActivePins();
         }
         else if(pinDown<10 && !miss)
         {
@@ -59,20 +61,29 @@ public class GameManager : MonoBehaviour
         }
         else if(pinDown<10 && miss)
         {
-            InitPins();
+            InitPinsPosAndRot();
+            SetActivePins();
+            miss = false;
         }
 
-        gut.pinDown = 0;
+        gut.pinDown = 0;    
+    }
 
-        void InitPins()
+    public void InitPinsPosAndRot()
+    {
+        for (int i = 0; i < pins.Length; i++)
         {
-            for (int i = 0; i < pins.Length; i++)
-            {
-                pinsRb[i].velocity = Vector3.zero;
-                pinsRb[i].angularVelocity = Vector3.zero;
-                pins[i].transform.SetPositionAndRotation(originalPos[i], originalRot[i]);
-                pins[i].SetActive(true);
-            }
+            pinsRb[i].velocity = Vector3.zero;
+            pinsRb[i].angularVelocity = Vector3.zero;
+            pins[i].transform.SetPositionAndRotation(originalPos[i], originalRot[i]);
+        }
+    }
+
+    void SetActivePins()
+    {
+        for (int i = 0; i < pins.Length; i++)
+        {
+            pins[i].SetActive(true);
         }
     }
 }

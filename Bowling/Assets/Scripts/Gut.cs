@@ -6,6 +6,7 @@ public class Gut : MonoBehaviour
 {
     public int pinDown = 0;
     GameObject[] pins;
+    bool miss=false;
     [SerializeField] GameManager gameManager;
     [SerializeField] ScoreManager scoreManager;
     // Start is called before the first frame update
@@ -25,6 +26,7 @@ public class Gut : MonoBehaviour
         if (other.gameObject.name == "BowlingBall")
         {
             CountPinKnock();
+            gameManager.InitPinsPosAndRot();
             scoreManager.Roll(pinDown);
         }
     }
@@ -40,5 +42,4 @@ public class Gut : MonoBehaviour
             }
         }
     }
-
 }
