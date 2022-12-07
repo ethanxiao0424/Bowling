@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 199685750}
   - component: {fileID: 199685749}
   - component: {fileID: 199685753}
-  - component: {fileID: 199685754}
   - component: {fileID: 199685755}
   m_Layer: 0
   m_Name: BowlingBall
@@ -239,20 +238,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &199685754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199685748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4558e60f8530c9428064fac6ce651eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ball: {fileID: 199685748}
-  force: 1000
 --- !u!82 &199685755
 AudioSource:
   m_ObjectHideFlags: 0
@@ -599,7 +584,7 @@ Rigidbody:
   m_GameObject: {fileID: 333728847}
   serializedVersion: 2
   m_Mass: 1.6
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -712,7 +697,7 @@ Rigidbody:
   m_GameObject: {fileID: 388229752}
   serializedVersion: 2
   m_Mass: 1.6
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -932,7 +917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 199685748}
   ballAudio: {fileID: 199685755}
-  force: 100
+  force: 1000
 --- !u!4 &604948400
 Transform:
   m_ObjectHideFlags: 0
@@ -946,7 +931,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &612328370
 GameObject:
@@ -1108,7 +1093,7 @@ Rigidbody:
   m_GameObject: {fileID: 638864607}
   serializedVersion: 2
   m_Mass: 1.6
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1289,7 +1274,7 @@ Rigidbody:
   m_GameObject: {fileID: 694262786}
   serializedVersion: 2
   m_Mass: 1.6
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1409,7 +1394,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &771859567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1498,7 +1483,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &791949755
 GameObject:
@@ -1591,7 +1576,7 @@ GameObject:
   - component: {fileID: 838718101}
   - component: {fileID: 838718105}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Gut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1608,8 +1593,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.11, z: 102.80908}
-  m_Center: {x: 0, y: -0.2, z: -50.904545}
+  m_Size: {x: 30, y: 1, z: 300}
+  m_Center: {x: 0, y: -35, z: -50.904545}
 --- !u!23 &838718102
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1674,7 +1659,7 @@ Transform:
   m_Children:
   - {fileID: 1148536617}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &838718105
 MonoBehaviour:
@@ -1685,22 +1670,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 838718100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8123d3a24771dbd4fb3f8de15f83fd79, type: 3}
+  m_Script: {fileID: 11500000, guid: 24dd43cafe0e7904ab7da5adb410be66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pins:
-  - {fileID: 1242877381}
-  - {fileID: 1465899869}
-  - {fileID: 1604840069}
-  - {fileID: 1532049298}
-  - {fileID: 694262786}
-  - {fileID: 388229752}
-  - {fileID: 638864607}
-  - {fileID: 1361345730}
-  - {fileID: 2084063372}
-  - {fileID: 333728847}
-  ball: {fileID: 199685748}
-  scoreManager: {fileID: 1705353329}
+  pinDown: 0
+  gameManager: {fileID: 1062404982}
+  scoreManager: {fileID: 1705353331}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,6 +1814,64 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024286196}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1062404981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1062404983}
+  - component: {fileID: 1062404982}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1062404982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062404981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8123d3a24771dbd4fb3f8de15f83fd79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pins:
+  - {fileID: 1242877381}
+  - {fileID: 1465899869}
+  - {fileID: 1604840069}
+  - {fileID: 1532049298}
+  - {fileID: 694262786}
+  - {fileID: 388229752}
+  - {fileID: 638864607}
+  - {fileID: 1361345730}
+  - {fileID: 2084063372}
+  - {fileID: 333728847}
+  gut: {fileID: 838718105}
+  ball: {fileID: 199685748}
+  scoreManager: {fileID: 1705353331}
+--- !u!4 &1062404983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062404981}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.054997, y: 4.708126, z: 3.5682056}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1079479613
 GameObject:
   m_ObjectHideFlags: 0
@@ -1931,7 +1964,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1965,7 +1998,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2339,7 +2372,7 @@ Rigidbody:
   m_GameObject: {fileID: 1242877381}
   serializedVersion: 2
   m_Mass: 1.6
-  m_Drag: 0.05
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -2452,7 +2485,7 @@ Rigidbody:
   m_GameObject: {fileID: 1361345730}
   serializedVersion: 2
   m_Mass: 1.6
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -2734,7 +2767,7 @@ Rigidbody:
   m_GameObject: {fileID: 1465899869}
   serializedVersion: 2
   m_Mass: 1.6
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -2847,7 +2880,7 @@ Rigidbody:
   m_GameObject: {fileID: 1532049298}
   serializedVersion: 2
   m_Mass: 1.6
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -2960,7 +2993,7 @@ Rigidbody:
   m_GameObject: {fileID: 1604840069}
   serializedVersion: 2
   m_Mass: 1.6
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -3095,7 +3128,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1705353331
 MonoBehaviour:
@@ -3664,7 +3697,7 @@ Rigidbody:
   m_GameObject: {fileID: 2084063372}
   serializedVersion: 2
   m_Mass: 1.6
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0

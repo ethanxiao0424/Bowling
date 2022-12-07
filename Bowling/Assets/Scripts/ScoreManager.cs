@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
     private int[] rolls=new int[21];
-    private int[] frame = new int[10];
+    //private int[] frame = new int[10];
     private int currentRoll = 0;
     int selectFrame;
     public TMP_Text ScoreUI;
@@ -18,16 +17,7 @@ public class ScoreManager : MonoBehaviour
     /// <param name="pins"></param>
     public void Roll(int pins)
     {
-        rolls[currentRoll++] = pins;
-
-    }
-
-    public void Roll(int[] pins)
-    {
-        for (int i = 0; i < pins.Length; i++)
-        {
-            rolls[currentRoll++] = pins[i];
-        }
+        rolls[currentRoll] = pins;
     }
 
     /// <summary>
@@ -57,33 +47,32 @@ public class ScoreManager : MonoBehaviour
                 frameIndex += 2;
             }
         }
-        
-        Debug.Log(score);
+        Debug.Log($"Score = {score}, currentRolls = {currentRoll}");
         ScoreUI.text = score.ToString();
         return score;
     }
 
-    private bool IsStrike(int frameIndex)
+    public bool IsStrike(int frameIndex)
     {
         return rolls[frameIndex] == 10;
     }
 
-    private int SumOfBallsInFrame(int frameIndex)
+    public int SumOfBallsInFrame(int frameIndex)
     {
         return rolls[frameIndex] + rolls[frameIndex + 1];
     }
 
-    private int SpareBonus(int frameIndex)
+    public int SpareBonus(int frameIndex)
     {
         return rolls[frameIndex + 2];
     }
-    
-    private int StrikeBonus(int frameIndex)
+
+    public int StrikeBonus(int frameIndex)
     {
         return rolls[frameIndex + 1] + rolls[frameIndex + 2];
     }
 
-    private bool IsSpare(int frameIndex)
+    public bool IsSpare(int frameIndex)
     {
         return rolls[frameIndex] + rolls[frameIndex + 1] == 10;
     }
