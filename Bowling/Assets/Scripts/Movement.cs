@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     [SerializeField]float force;
     bool isShooting = false;
     bool isGoingRight = true;
+    bool start = false;
 
     void Start()
     {
@@ -23,19 +24,20 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return))
+        if (start)
         {
-            rb.AddForce(Vector3.forward * force);
-            ballAudio.Play();
-            isShooting = true;
-        }
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                rb.AddForce(Vector3.forward * force);
+                ballAudio.Play();
+                isShooting = true;
+            }
 
-        if(!isShooting)
-        {
-            MoveBall();
+            if (!isShooting)
+            {
+                MoveBall();
+            }
         }
-
-        
     }
 
     void MoveBall()
@@ -59,6 +61,10 @@ public class Movement : MonoBehaviour
             isGoingRight = true;
         }
     }
-
+    public void StartMoveBall()
+    {
+        start = true;
+        isShooting = false;
+    }
     
 }

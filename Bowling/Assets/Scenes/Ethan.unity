@@ -215,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199685748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.04, z: 0.21}
+  m_LocalPosition: {x: 0, y: 0.08372004, z: 0.21}
   m_LocalScale: {x: 0.16744007, y: 0.16744007, z: 0.16744007}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -931,7 +931,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &612328370
 GameObject:
@@ -1483,7 +1483,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &791949755
 GameObject:
@@ -1855,8 +1855,10 @@ MonoBehaviour:
   - {fileID: 2084063372}
   - {fileID: 333728847}
   gut: {fileID: 838718105}
+  miss: 0
   ball: {fileID: 199685748}
   scoreManager: {fileID: 1705353331}
+  movement: {fileID: 604948399}
 --- !u!4 &1062404983
 Transform:
   m_ObjectHideFlags: 0
@@ -1870,7 +1872,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1079479613
 GameObject:
@@ -3128,7 +3130,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1705353331
 MonoBehaviour:
@@ -3142,6 +3144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 424add5d4db2e93439c71d982871f8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentRoll: 0
   ScoreUI: {fileID: 1093478052}
 --- !u!1 &1769673583
 GameObject:

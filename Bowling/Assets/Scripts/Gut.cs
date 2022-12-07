@@ -6,7 +6,6 @@ public class Gut : MonoBehaviour
 {
     public int pinDown = 0;
     GameObject[] pins;
-    bool miss=false;
     [SerializeField] GameManager gameManager;
     [SerializeField] ScoreManager scoreManager;
     // Start is called before the first frame update

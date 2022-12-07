@@ -48,7 +48,7 @@ public class ScoreManager : MonoBehaviour
             }
         }
 
-        Debug.Log($"Score = {score}, currentRolls = {currentRoll}");
+        Debug.Log($"Score = {score}");
         ScoreUI.text = score.ToString();
         return score;
     }
@@ -61,6 +61,7 @@ public class ScoreManager : MonoBehaviour
     {
         return rolls[frameIndex] + rolls[frameIndex + 1] == 10;
     }
+
     public void SetSelectFrame(int selectFrame)
     {
         this.selectFrame = selectFrame;

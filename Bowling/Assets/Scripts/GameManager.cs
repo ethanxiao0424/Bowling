@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject ball;
     Rigidbody ballRb;
     [SerializeField] ScoreManager scoreManager;
+    [SerializeField] Movement movement;
     private Rigidbody[] pinsRb;
 
     private void Start()
@@ -42,9 +43,11 @@ public class GameManager : MonoBehaviour
     void Init()
     {
         pinDown = gut.pinDown;
-        ball.transform.position = new Vector3(0, 0.0399999991f, 0.209999993f);
+        ball.transform.position = new Vector3(0, 0.0837200433f, 0);
+        ball.transform.rotation = Quaternion.identity;
         ballRb.velocity = Vector3.zero;
         ballRb.angularVelocity = Vector3.zero;
+        movement.StartMoveBall(); 
 
         if (pinDown == 10)
         {
